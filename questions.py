@@ -5,8 +5,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import os
+from dotenv import load_dotenv
 
-service_obj = Service("c:/Users/hafim/SeleniumDrivers/chromedriver.exe")
+load_dotenv()
+
+service_obj = Service(os.getenv("SERVICE_OBJ_PATH"))
 options = Options()
 options.add_argument('--ignore-certificate-errors')
 options.add_experimental_option('excludeSwitches', ['enable-logging'])

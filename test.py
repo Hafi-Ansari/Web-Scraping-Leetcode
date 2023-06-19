@@ -2,14 +2,21 @@ import json
 import html
 from boilerplate import get_boilerplate_code
 from description import get_problem_description
+import ast
+import re
+from typing import List, Dict, Union, Any
+
 
 def parse_problem_description(problem_description):
     sections = problem_description.split("\n")
-    constraints_idx = next((i for i, string in enumerate(sections) if 'Constraints:' in string), None)
+    constraints_idx = next((i for i, string in enumerate(
+        sections) if 'Constraints:' in string), None)
     description = "\n".join(sections[:constraints_idx]).strip()
     constraints = "\n".join(sections[constraints_idx+1:]).strip()
-    examples = process_problem_description("\n".join(sections[:constraints_idx]))
+    examples = process_problem_description(
+        "\n".join(sections[:constraints_idx]))
     return description, examples, constraints
+
 
 def process_problem_description(description):
     parts = description.split("\n")
@@ -26,17 +33,39 @@ def process_problem_description(description):
         examples.append("\n".join(example))
     return examples
 
+
 def parse_example(example):
     example_lines = example.strip().split("\n")
     example_lines = [line.strip() for line in example_lines if line.strip()]
-    inputs = []
+    inputs = {}
     outputs = []
     for idx, line in enumerate(example_lines):
         if "Input:" in line:
-            inputs.append(line.replace("Input: ", "").strip())
-            outputs.append(
-                example_lines[idx+1].replace("Output: ", "").strip())
+            input_str = line.replace("Input: ", "").strip()
+            # Regex pattern that doesn't match commas inside brackets
+            input_strs = re.split(',(?![^[]*])', input_str)
+            for input_pair in input_strs:
+                try:
+                    key, value_str = input_pair.split('=')
+                    # try parsing as a Python literal (list, dict, etc)
+                    try:
+                        value = ast.literal_eval(value_str.strip())
+                    except (ValueError, SyntaxError):
+                        # if that fails, remove leading/trailing quotes and handle as a string
+                        value = value_str.strip()[1:-1] if value_str.strip().startswith(
+                            '"') and value_str.strip().endswith('"') else value_str.strip()
+                    inputs[key.strip()] = value
+                except ValueError:
+                    inputs[input_pair.strip()] = None
+            output_str = example_lines[idx+1].replace("Output: ", "").strip()
+            try:
+                output_data = ast.literal_eval(output_str)
+                # This part has been modified
+                outputs = output_data
+            except (ValueError, SyntaxError):
+                outputs = output_str
     return {"inputs": inputs, "outputs": outputs} if inputs and outputs else None
+
 
 # Read the links from leetcode.txt
 with open('leetcode.txt', 'r') as file:
@@ -52,7 +81,8 @@ for idx, link in enumerate(links, start=1):
     description, example_sections, constraints = parse_problem_description(
         problem_description)
     test_cases = [parse_example(example) for example in example_sections]
-    test_cases = [tc for tc in test_cases if tc is not None]  # Exclude None from the list
+    # Exclude None from the list
+    test_cases = [tc for tc in test_cases if tc is not None]
     question = {
         "id": idx,
         "title": link.split("/")[-2].replace("-", " ").title(),

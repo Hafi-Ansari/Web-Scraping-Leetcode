@@ -13,28 +13,25 @@
     "code": "class Solution:\n    def twoSum(self, nums: List[int], target: int) -&gt; List\n[int]:",
     "test_cases": [
       {
-        "inputs": [
-          "nums = [2,7,11,15], target = 9"
-        ],
-        "outputs": [
-          "[0,1]"
-        ]
+        "inputs": {
+          "nums": [2, 7, 11, 15],
+          "target": 9
+        },
+        "outputs": [0, 1]
       },
       {
-        "inputs": [
-          "nums = [3,2,4], target = 6"
-        ],
-        "outputs": [
-          "[1,2]"
-        ]
+        "inputs": {
+          "nums": [3, 2, 4],
+          "target": 6
+        },
+        "outputs": [1, 2]
       },
       {
-        "inputs": [
-          "nums = [3,3], target = 6"
-        ],
-        "outputs": [
-          "[0,1]"
-        ]
+        "inputs": {
+          "nums": [3, 3],
+          "target": 6
+        },
+        "outputs": [0, 1]
       }
     ]
   },
@@ -52,28 +49,25 @@
     "code": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def addTwoNumbers(self, l1: Optional[ListNode], l2: \nOptional[ListNode]) -&gt; Optional[ListNode]:",
     "test_cases": [
       {
-        "inputs": [
-          "l1 = [2,4,3], l2 = [5,6,4]"
-        ],
-        "outputs": [
-          "[7,0,8]"
-        ]
+        "inputs": {
+          "l1": [2, 4, 3],
+          "l2": [5, 6, 4]
+        },
+        "outputs": [7, 0, 8]
       },
       {
-        "inputs": [
-          "l1 = [0], l2 = [0]"
-        ],
-        "outputs": [
-          "[0]"
-        ]
+        "inputs": {
+          "l1": [0],
+          "l2": [0]
+        },
+        "outputs": [0]
       },
       {
-        "inputs": [
-          "l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]"
-        ],
-        "outputs": [
-          "[8,9,9,9,0,0,0,1]"
-        ]
+        "inputs": {
+          "l1": [9, 9, 9, 9, 9, 9, 9],
+          "l2": [9, 9, 9, 9]
+        },
+        "outputs": [8, 9, 9, 9, 0, 0, 0, 1]
       }
     ]
   },
@@ -91,28 +85,22 @@
     "code": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -&gt; int:",
     "test_cases": [
       {
-        "inputs": [
-          "s = \"abcabcbb\""
-        ],
-        "outputs": [
-          "3"
-        ]
+        "inputs": {
+          "s": "abcabcbb"
+        },
+        "outputs": 3
       },
       {
-        "inputs": [
-          "s = \"bbbbb\""
-        ],
-        "outputs": [
-          "1"
-        ]
+        "inputs": {
+          "s": "bbbbb"
+        },
+        "outputs": 1
       },
       {
-        "inputs": [
-          "s = \"pwwkew\""
-        ],
-        "outputs": [
-          "3"
-        ]
+        "inputs": {
+          "s": "pwwkew"
+        },
+        "outputs": 3
       }
     ]
   }

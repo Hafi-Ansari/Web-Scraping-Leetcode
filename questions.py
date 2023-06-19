@@ -26,7 +26,7 @@ links_list = [link.get_attribute("href") for link in question_links]
 driver.quit()
 
 # Save the links to a text file
-with open("leetcode_links.txt", "w") as file:
+with open("leetcode.txt", "w") as file:
     for link in links_list:
         file.write(link + "\n")
 

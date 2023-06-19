@@ -1,0 +1,119 @@
+[
+  {
+    "id": 1,
+    "title": "Two Sum",
+    "description": "Given an array of integers  nums \u00a0and an integer  target , return  indices of the two numbers such that they add up to  target .\n\nYou may assume that each input would have  exactly  one solution , and you may not use the  same  element twice.\n\nYou can return the answer in any order.\n\n\u00a0\n\nExample 1:\n\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\nExplanation: Because nums[0] + nums[1] == 9, we return [0, 1].\n\n\nExample 2:\n\nInput: nums = [3,2,4], target = 6\nOutput: [1,2]\n\n\nExample 3:\n\nInput: nums = [3,3], target = 6\nOutput: [0,1]",
+    "examples": [
+      "Given an array of integers  nums \u00a0and an integer  target , return  indices of the two numbers such that they add up to  target .\n\nYou may assume that each input would have  exactly  one solution , and you may not use the  same  element twice.\n\nYou can return the answer in any order.\n\n\u00a0\n",
+      "Example 1:\n\nInput: nums = [2,7,11,15], target = 9\nOutput: [0,1]\nExplanation: Because nums[0] + nums[1] == 9, we return [0, 1].\n\n",
+      "Example 2:\n\nInput: nums = [3,2,4], target = 6\nOutput: [1,2]\n\n",
+      "Example 3:\n\nInput: nums = [3,3], target = 6\nOutput: [0,1]\n\n\n\u00a0\n"
+    ],
+    "constraints": "2 <= nums.length <= 104\n-109 <= nums[i] <= 109\n-109 <= target <= 109\nOnly one valid answer exists.",
+    "code": "class Solution:\n    def twoSum(self, nums: List[int], target: int) -&gt; List\n[int]:",
+    "test_cases": [
+      {
+        "inputs": [
+          "nums = [2,7,11,15], target = 9"
+        ],
+        "outputs": [
+          "[0,1]"
+        ]
+      },
+      {
+        "inputs": [
+          "nums = [3,2,4], target = 6"
+        ],
+        "outputs": [
+          "[1,2]"
+        ]
+      },
+      {
+        "inputs": [
+          "nums = [3,3], target = 6"
+        ],
+        "outputs": [
+          "[0,1]"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Add Two Numbers",
+    "description": "You are given two  non-empty  linked lists representing two non-negative integers. The digits are stored in  reverse order , and each of their nodes contains a single digit. Add the two numbers and return the sum\u00a0as a linked list.\n\nYou may assume the two numbers do not contain any leading zero, except the number 0 itself.\n\n\u00a0\n\nExample 1:\n\nInput: l1 = [2,4,3], l2 = [5,6,4]\nOutput: [7,0,8]\nExplanation: 342 + 465 = 807.\n\n\nExample 2:\n\nInput: l1 = [0], l2 = [0]\nOutput: [0]\n\n\nExample 3:\n\nInput: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]\nOutput: [8,9,9,9,0,0,0,1]",
+    "examples": [
+      "You are given two  non-empty  linked lists representing two non-negative integers. The digits are stored in  reverse order , and each of their nodes contains a single digit. Add the two numbers and return the sum\u00a0as a linked list.\n\nYou may assume the two numbers do not contain any leading zero, except the number 0 itself.\n\n\u00a0\n",
+      "Example 1:\n\nInput: l1 = [2,4,3], l2 = [5,6,4]\nOutput: [7,0,8]\nExplanation: 342 + 465 = 807.\n\n",
+      "Example 2:\n\nInput: l1 = [0], l2 = [0]\nOutput: [0]\n\n",
+      "Example 3:\n\nInput: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]\nOutput: [8,9,9,9,0,0,0,1]\n\n\n\u00a0\n"
+    ],
+    "constraints": "The number of nodes in each linked list is in the range [1, 100].\n0 <= Node.val <= 9\nIt is guaranteed that the list represents a number that does not have leading zeros.",
+    "code": "# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def addTwoNumbers(self, l1: Optional[ListNode], l2: \nOptional[ListNode]) -&gt; Optional[ListNode]:",
+    "test_cases": [
+      {
+        "inputs": [
+          "l1 = [2,4,3], l2 = [5,6,4]"
+        ],
+        "outputs": [
+          "[7,0,8]"
+        ]
+      },
+      {
+        "inputs": [
+          "l1 = [0], l2 = [0]"
+        ],
+        "outputs": [
+          "[0]"
+        ]
+      },
+      {
+        "inputs": [
+          "l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]"
+        ],
+        "outputs": [
+          "[8,9,9,9,0,0,0,1]"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Longest Substring Without Repeating Characters",
+    "description": "Given a string  s , find the length of the  longest   substring  without repeating characters.\n\n\u00a0\n\nExample 1:\n\nInput: s = &quot;abcabcbb&quot;\nOutput: 3\nExplanation: The answer is &quot;abc&quot;, with the length of 3.\n\n\nExample 2:\n\nInput: s = &quot;bbbbb&quot;\nOutput: 1\nExplanation: The answer is &quot;b&quot;, with the length of 1.\n\n\nExample 3:\n\nInput: s = &quot;pwwkew&quot;\nOutput: 3\nExplanation: The answer is &quot;wke&quot;, with the length of 3.\nNotice that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.",
+    "examples": [
+      "Given a string  s , find the length of the  longest   substring  without repeating characters.\n\n\u00a0\n",
+      "Example 1:\n\nInput: s = \"abcabcbb\"\nOutput: 3\nExplanation: The answer is \"abc\", with the length of 3.\n\n",
+      "Example 2:\n\nInput: s = \"bbbbb\"\nOutput: 1\nExplanation: The answer is \"b\", with the length of 1.\n\n",
+      "Example 3:\n\nInput: s = \"pwwkew\"\nOutput: 3\nExplanation: The answer is \"wke\", with the length of 3.\nNotice that the answer must be a substring, \"pwke\" is a subsequence and not a substring.\n\n\n\u00a0\n"
+    ],
+    "constraints": "0 <= s.length <= 5 * 104\ns consists of English letters, digits, symbols and spaces.",
+    "code": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -&gt; int:",
+    "test_cases": [
+      {
+        "inputs": [
+          "s = \"abcabcbb\""
+        ],
+        "outputs": [
+          "3"
+        ]
+      },
+      {
+        "inputs": [
+          "s = \"bbbbb\""
+        ],
+        "outputs": [
+          "1"
+        ]
+      },
+      {
+        "inputs": [
+          "s = \"pwwkew\""
+        ],
+        "outputs": [
+          "3"
+        ]
+      }
+    ]
+  }
+]

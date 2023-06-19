@@ -11,7 +11,7 @@ def get_boilerplate_code(url):
     options = Options()
     options.add_argument('--ignore-certificate-errors')
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    options.add_experimental_option("detach", True)
+    #options.add_experimental_option("detach", True)
     driver = webdriver.Chrome(service=service_obj, options=options)
 
     driver.get(url)

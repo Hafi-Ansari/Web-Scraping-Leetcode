@@ -2,6 +2,7 @@ import json
 import html
 from boilerplate import get_boilerplate_code
 from description import get_problem_description
+from clean import clean_questions
 import ast
 import re
 from typing import List, Dict, Union, Any
@@ -11,26 +12,16 @@ def parse_problem_description(problem_description):
     sections = problem_description.split("\n")
     constraints_idx = next((i for i, string in enumerate(
         sections) if 'Constraints:' in string), None)
-    description = "\n".join(sections[:constraints_idx]).strip()
+    examples_idx = next((i for i, string in enumerate(
+        sections) if 'Example' in string), None)
+    description = "\n".join(sections[:examples_idx]).strip()
+    examples = process_problem_description("\n".join(sections[examples_idx:constraints_idx]))
     constraints = "\n".join(sections[constraints_idx+1:]).strip()
-    examples = process_problem_description(
-        "\n".join(sections[:constraints_idx]))
     return description, examples, constraints
 
-
 def process_problem_description(description):
-    parts = description.split("\n")
-    examples = []
-    example = []
-    for part in parts:
-        if part.startswith("Example"):
-            if example:
-                examples.append("\n".join(example))
-            example = [part]
-        else:
-            example.append(part)
-    if example:
-        examples.append("\n".join(example))
+    parts = description.split("Example")
+    examples = ["Example" + ex for ex in parts[1:]]
     return examples
 
 
@@ -64,7 +55,7 @@ def parse_example(example):
                 outputs = output_data
             except (ValueError, SyntaxError):
                 outputs = output_str
-    return {"inputs": inputs, "outputs": outputs} if inputs and outputs else None
+    return {"inputs": inputs, "expectedOutput": outputs} if inputs and outputs else None
 
 
 # Read the links from leetcode.txt
@@ -90,10 +81,12 @@ for idx, link in enumerate(links, start=1):
         "examples": example_sections,
         "constraints": constraints,
         "code": html.escape(boilerplate_code),
-        "test_cases": test_cases
+        "testCases": test_cases
     }
     question_data.append(question)
 
 # Write the question data to a JSON file
 with open('questions.json', 'w') as json_file:
     json.dump(question_data, json_file, indent=2)
+
+clean_questions()
